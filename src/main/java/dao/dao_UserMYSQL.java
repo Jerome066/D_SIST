@@ -47,7 +47,7 @@ public class dao_UserMYSQL implements dao_User {
 		
 		String nombre = usuario.getNombre();
 		String correo = usuario.getCorreo();
-		int telefono = usuario.getTelefono();
+		String telefono = usuario.getTelefono();
 		String Rol = usuario.getRol();
 		String password = usuario.getPassword();
 		
@@ -55,6 +55,8 @@ public class dao_UserMYSQL implements dao_User {
 		try {
 
 			// manda el QUERY a la BD y regresa si se realizo o no
+			// Establecer conexion con la base de datos
+			con = ds.getConnection();
 
 			Statement stmt = con.createStatement();
 			String strSelect = "INSERT INTO Usuario (Nombre, CorreoElectronico, TelefonoCelular, TipoUsuario)"
@@ -81,7 +83,7 @@ public class dao_UserMYSQL implements dao_User {
 		try {
 
 			/// manda el QUERY a la BD y regresa si se realizo o no
-
+			con = ds.getConnection();
 			Statement stmt = con.createStatement();
 			String strSelect = "DELETE FROM Usuario WHERE IdUsuario = "+usuario.getId() +";"; // quitar este query ejemplo
 			ResultSet resultados = stmt.executeQuery(strSelect);
@@ -106,7 +108,7 @@ public class dao_UserMYSQL implements dao_User {
 		try {
 
 			/// manda el QUERY a la BD y regresa si se realizo o no
-
+			con = ds.getConnection();
 			Statement stmt = con.createStatement();
 			String strSelect = "UPDATE Usuario"
 					+ "SET Nombre = '"+usuario.getNombre()+"', CorreoElectronico = '"+usuario.getCorreo()+"', TelefonoCelular = '"+usuario.getTelefono()+"', TipoUsuario = '"+usuario.getRol()+"'"
@@ -127,14 +129,14 @@ public class dao_UserMYSQL implements dao_User {
 		return band;
 	}
 
-	public ArrayList<User> ReporteUsuarios(User usuario) { // array de clase usuarios
+	public ArrayList<User> ReporteUsuarios() { // array de clase usuarios
 		boolean band = false;
 		ArrayList<User> ALL_USERS = new ArrayList();
 
 		try {
 
 			// obtiene los valores de la tabla de Usuario
-
+			con = ds.getConnection();
 			Statement stmt = con.createStatement();
 			String strSelect = "SELECT * FROM Usuario;"; // quitar este query ejemplo
 			ResultSet resultados = stmt.executeQuery(strSelect);
@@ -144,7 +146,7 @@ public class dao_UserMYSQL implements dao_User {
 				int i = resultados.getInt("IdUsuario");
 				String nomb = resultados.getString("Nombre");
 				String corr = resultados.getString("CorreoElectronico");
-				int tel = resultados.getInt("TelefonoCelular");
+				String tel = resultados.getString("TelefonoCelular");
 				String r = resultados.getString("TipoUsuario");
 
 				User u = new User(nomb, corr, tel, r, "");
@@ -158,16 +160,16 @@ public class dao_UserMYSQL implements dao_User {
 		return ALL_USERS;
 	}
 
-	public User ReporteUsuario(User usuario) { // array de clase usuarios
+	public User ReporteUsuario(int ID) { // array de clase usuarios
 		boolean band = false;
 		User u = null;
 
 		try {
 
 			// obtiene los valores de la tabla de Usuario
-
+			con = ds.getConnection();
 			Statement stmt = con.createStatement();
-			String strSelect = "SELECT * FROM Usuario WHERE IdUsuario = "+usuario.getId()+";"; // quitar este query ejemplo
+			String strSelect = "SELECT * FROM Usuario WHERE IdUsuario = "+ID+";"; // quitar este query ejemplo
 			ResultSet resultados = stmt.executeQuery(strSelect);
 
 			while (resultados.next()) {
@@ -175,7 +177,7 @@ public class dao_UserMYSQL implements dao_User {
 				int i = resultados.getInt("IdUsuario");
 				String nomb = resultados.getString("Nombre");
 				String corr = resultados.getString("CorreoElectronico");
-				int tel = resultados.getInt("TelefonoCelular");
+				String tel = resultados.getString("TelefonoCelular");
 				String r = resultados.getString("TipoUsuario");
 
 				u = new User(nomb, corr, tel, r, "");

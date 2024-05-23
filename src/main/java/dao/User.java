@@ -5,7 +5,7 @@ public class User {
 	private int Id;
 	private String Nombre;
 	private String Correo;
-	private int Telefono;
+	private String Telefono;
 	private String Rol;
 	
 	private String Password;
@@ -14,7 +14,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String nombre, String correo, int telefono, String rol, String password) {
+	public User(String nombre, String correo, String telefono, String rol, String password) {
 		super();
 		this.Nombre = nombre;
 		this.Correo = correo;
@@ -55,11 +55,11 @@ public class User {
 		Correo = correo;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return Telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		Telefono = telefono;
 	}
 

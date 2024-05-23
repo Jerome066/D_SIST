@@ -7,5 +7,6 @@ public interface dao_User {
 	boolean AltaUsuario(User usuario);
 	boolean BajaUsuario(User usuario);
 	boolean ModificacionUsuario(User usuario);
-	ArrayList<User> ReporteUsuarios(User usuario);
+	ArrayList<User> ReporteUsuarios();
+	User ReporteUsuario(int ID);
 }

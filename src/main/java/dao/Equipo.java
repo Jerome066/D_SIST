@@ -12,16 +12,18 @@ public class Equipo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Equipo(String marca, String descripcion, int cantidad) {
+	public Equipo(String nomb, String marca, String descripcion, int cantidad) {
 		super();
+		Nombre = nomb;
 		Marca = marca;
 		Descripcion = descripcion;
 		Cantidad = cantidad;
 	}
 	
-	public Equipo(int iD, String marca, String descripcion, int cantidad) {
+	public Equipo(int iD, String nomb, String marca, String descripcion, int cantidad) {
 		super();
 		ID = iD;
+		Nombre = nomb;
 		Marca = marca;
 		Descripcion = descripcion;
 		Cantidad = cantidad;
