@@ -17,7 +17,7 @@ public class dao_EquipoMYSQL implements dao_Equipo{
 	public boolean AltaEquipo(Equipo eq) {
 		boolean band = false;
 		
-		String nom = eq.getNombre();
+		String nom = eq.getNombre(); 
 		String marc = eq.getMarca();
 		String desc = eq.getDescripcion();
 		int cant = eq.getCantidad();
@@ -154,7 +154,7 @@ public class dao_EquipoMYSQL implements dao_Equipo{
 				// Acceder a los valores de cada fila
 				int i = resultados.getInt("IdEquipo");
 				String nomb = resultados.getString("Nombre");
-				String marc = resultados.getString("Marca");
+				String marc = resultados.getString("Marca"); 
 				String des = resultados.getString("Descripcion");
 				int r = resultados.getInt("Cantidad");
 
